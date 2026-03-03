@@ -312,7 +312,7 @@ export default function CompLift() {
     }).map(({ key }) => ({ execIdx: ei, field: key }))
   ) : [];
 
-  const canExport = selJob?.status === STATUS.DONE && allFlags.length === 0;
+  const canExport = !!curData;
   const activeFlagData = activeFlag && curData ? curData.executives[activeFlag.execIdx]?.[activeFlag.field] : null;
 
   return (
