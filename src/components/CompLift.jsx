@@ -86,12 +86,12 @@ function classifyError(err, context) {
     return { title: "Network Error", detail: "Could not reach the Anthropic API.", hint: "Check your internet connection and try again.", raw };
   }
   if (msg.includes("JSON") || msg.includes("Unexpected token") || msg.includes("parse")) {
-    return { title: "Unexpected Response", detail: "The API returned a response that couldn't be parsed as structured data.", hint: "This may happen with unusual PDF formatting. Try re-uploading or check if the document contains a readable compensation table.", raw };
+    return { title: "Unexpected Response", detail: "The API returned a response that couldn't be parsed as structured data.", hint: "This may happen with unusual PDF formatting. Try re-uploading or check if the document contains a readable structured table.", raw };
   }
   if (msg.includes("invalid_request") || msg.includes("400")) {
     return { title: "Invalid Request", detail: "The API rejected the request.", hint: "The PDF may be encrypted, corrupted, or in an unsupported format.", raw };
   }
-  return { title: "Extraction Failed", detail: msg, hint: "Check that the file is a valid, readable PDF containing a compensation table.", raw };
+  return { title: "Extraction Failed", detail: msg, hint: "Check that the file is a valid, readable PDF.", raw };
 }
 
 async function extractFile(file, apiKey) {
@@ -336,10 +336,10 @@ export default function CompLift() {
       {/* ── HEADER ── */}
       <header style={{ height: 52, display: "flex", alignItems: "center", padding: "0 24px", borderBottom: "1px solid #13131e", backgroundColor: "rgba(7,7,14,.92)", backdropFilter: "blur(12px)", position: "sticky", top: 0, zIndex: 200, gap: 16, flexShrink: 0 }}>
         <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 17, fontWeight: 800, letterSpacing: "-0.03em" }}>
-          Comp<span style={{ color: "#22c55e" }}>Lift</span>
+          Fo<span style={{ color: "#22c55e" }}>lio</span>
         </div>
         <div style={{ width: 1, height: 18, background: "#1e1e2a" }} />
-        <div style={{ fontSize: 10, color: "#7a7a8e", letterSpacing: "0.12em", textTransform: "uppercase" }}>Executive Compensation Intelligence</div>
+        <div style={{ fontSize: 10, color: "#7a7a8e", letterSpacing: "0.12em", textTransform: "uppercase" }}>Financial Document Intelligence</div>
         <div style={{ marginLeft: "auto", display: "flex", gap: 8, alignItems: "center" }}>
           {jobs.filter(j => j.status === STATUS.DONE).length > 1 && (
             <button onClick={exportAll} style={{ padding: "6px 12px", borderRadius: 5, border: "1px solid #1e1e2a", background: "transparent", color: "#6b6b7e", fontSize: 10, fontFamily: "inherit", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer" }}>
@@ -354,7 +354,7 @@ export default function CompLift() {
             {apiKey ? "🔑" : "⚠ Set API Key"}
           </button>
           <button onClick={() => fileInputRef.current.click()} style={{ padding: "6px 14px", borderRadius: 5, border: "none", background: "#16a34a", color: "#fff", fontSize: 10, fontFamily: "inherit", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer" }}>
-            + Upload AICs
+            + Upload Documents
           </button>
           <input ref={fileInputRef} type="file" accept=".pdf" multiple style={{ display: "none" }} onChange={e => addFiles(e.target.files)} />
         </div>
@@ -426,9 +426,9 @@ export default function CompLift() {
           {jobs.length === 0 && (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", animation: "fadeUp .4s ease", textAlign: "center" }}>
               <div style={{ fontSize: 52, marginBottom: 18, opacity: .15 }}>⬆</div>
-              <h1 style={{ fontFamily: "'Syne',sans-serif", fontSize: 26, fontWeight: 800, letterSpacing: "-0.04em", marginBottom: 10 }}>Drop AICs to begin</h1>
+              <h1 style={{ fontFamily: "'Syne',sans-serif", fontSize: 26, fontWeight: 800, letterSpacing: "-0.04em", marginBottom: 10 }}>Drop documents to begin</h1>
               <p style={{ color: "#7a7a8e", fontSize: 12, maxWidth: 360, lineHeight: 1.8 }}>
-                Upload one or more Annual Information Circulars from SEDAR. CompLift extracts every year of executive compensation data, flags uncertain values for your review, and exports clean structured CSV.
+                Upload financial PDFs — proxy circulars, regulatory filings, financial statements. Folio extracts structured data, flags uncertain values for your review, and exports clean CSV. Executive compensation tables are the first supported parser.
               </p>
               {!apiKey && (
                 <button onClick={openKeyModal} style={{ marginTop: 24, padding: "11px 22px", borderRadius: 6, border: "1px solid #4a3200", background: "rgba(245,158,11,0.07)", color: "#f59e0b", fontSize: 11, fontFamily: "inherit", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer" }}>
@@ -436,7 +436,7 @@ export default function CompLift() {
                 </button>
               )}
               <button onClick={() => fileInputRef.current.click()} style={{ marginTop: apiKey ? 24 : 10, padding: "11px 22px", borderRadius: 6, border: "none", background: "#16a34a", color: "#fff", fontSize: 11, fontFamily: "inherit", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer" }}>
-                + Upload AICs
+                + Upload Documents
               </button>
             </div>
           )}
