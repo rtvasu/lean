@@ -242,7 +242,7 @@ export default function CompLift() {
         setJobs(prev => prev.map(j => j.id === job.id ? { ...j, status: STATUS.ERROR, error: classified } : j));
       }
     }
-  }, []);
+  }, [apiKey]);
 
   const handleDrop = useCallback((e) => {
     e.preventDefault(); setDragOver(false);
