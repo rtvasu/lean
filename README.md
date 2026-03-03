@@ -4,7 +4,7 @@ Lean extracts executive compensation tables from Canadian AIC PDFs and helps rev
 
 ## API Key
 
-CompLift calls the Anthropic API directly from your browser. **No server is involved** — your API key never leaves your device.
+Lean calls the Anthropic API directly from your browser. **No server is involved** — your API key never leaves your device.
 
 On first launch, a prompt asks you to enter your Anthropic API key. The key is saved to your browser's `localStorage` and sent with each request to `api.anthropic.com`. You can update it at any time via the key icon in the header.
 
