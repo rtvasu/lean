@@ -336,7 +336,7 @@ export default function CompLift() {
       {/* ── HEADER ── */}
       <header style={{ height: 52, display: "flex", alignItems: "center", padding: "0 24px", borderBottom: "1px solid #13131e", backgroundColor: "rgba(7,7,14,.92)", backdropFilter: "blur(12px)", position: "sticky", top: 0, zIndex: 200, gap: 16, flexShrink: 0 }}>
         <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 17, fontWeight: 800, letterSpacing: "-0.03em" }}>
-          Fo<span style={{ color: "#22c55e" }}>lio</span>
+          Le<span style={{ color: "#22c55e" }}>an</span>
         </div>
         <div style={{ width: 1, height: 18, background: "#1e1e2a" }} />
         <div style={{ fontSize: 10, color: "#7a7a8e", letterSpacing: "0.12em", textTransform: "uppercase" }}>Financial Document Intelligence</div>

@@ -6,7 +6,7 @@ export default function Home() {
     <div style={{ fontFamily: 'DM Mono, monospace', background: '#07070e', color: '#d8d5cf', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ textAlign: 'center', maxWidth: 720, padding: 36 }}>
         <h1 style={{ fontFamily: 'Syne, sans-serif', fontSize: 40, marginBottom: 8 }}>
-          Fo<span style={{ color: '#22c55e' }}>lio</span>
+          Le<span style={{ color: '#22c55e' }}>an</span>
         </h1>
         <p style={{ color: '#9aa0a0', marginBottom: 18 }}>Financial document intelligence for analysts — parse proxy circulars, regulatory filings, and financial statements into structured, exportable data.</p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
