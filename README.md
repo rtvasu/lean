@@ -1,6 +1,6 @@
-# CompLift
+# Lean
 
-CompLift extracts executive compensation tables from Canadian AIC PDFs and helps review and export CSVs.
+Lean extracts executive compensation tables from Canadian AIC PDFs and helps review and export CSVs.
 
 ## API Key
 
